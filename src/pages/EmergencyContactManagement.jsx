@@ -12,7 +12,7 @@ export default function EmergencyContactManagement() {
   const fetchContacts = async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5005/api/emergency-contacts');
+      const res = await fetch(import.meta.env.VITE_API_URL + '/api/emergency-contacts');
       if (res.ok) setContacts(await res.json());
     } catch (err) {
       console.error(err);
@@ -28,7 +28,7 @@ export default function EmergencyContactManagement() {
   const handleSave = async (e) => {
     e.preventDefault();
     const method = formData.id ? 'PUT' : 'POST';
-    const url = formData.id ? `http://localhost:5005/api/emergency-contacts/${formData.id}` : 'http://localhost:5005/api/emergency-contacts';
+    const url = formData.id ? `${import.meta.env.VITE_API_URL}/api/emergency-contacts/${formData.id}` : import.meta.env.VITE_API_URL + '/api/emergency-contacts';
     try {
       const res = await fetch(url, {
         method,
@@ -48,7 +48,7 @@ export default function EmergencyContactManagement() {
   const handleDelete = async (id) => {
     if (!window.confirm('Delete this emergency contact?')) return;
     try {
-      const res = await fetch(`http://localhost:5005/api/emergency-contacts/${id}`, { method: 'DELETE' });
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/emergency-contacts/${id}`, { method: 'DELETE' });
       if (res.ok) fetchContacts();
     } catch (err) {
       console.error(err);

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Compass, Eye, ShieldAlert, CheckCircle, Download, User, Calendar, MapPin, Ticket } from 'lucide-react';
 
-const backendBase = 'http://localhost:5005';
+const backendBase = import.meta.env.VITE_API_URL;
 
 export default function QRGatePass() {
     const [leaveId, setLeaveId] = useState('');

@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Clock } from 'lucide-react';
 
-const backendBase = 'http://localhost:5005';
+const backendBase = import.meta.env.VITE_API_URL;
 
 export default function LeaveHistory() {
     const [items, setItems] = useState([]);

@@ -15,7 +15,7 @@ export default function HostelAnnouncements() {
   const fetchAnnouncements = async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5005/api/announcements');
+      const res = await fetch(import.meta.env.VITE_API_URL + '/api/announcements');
       if (res.ok) setAnnouncements(await res.json());
     } catch (err) {
       console.error(err);
@@ -31,7 +31,7 @@ export default function HostelAnnouncements() {
   const handleSave = async (e) => {
     e.preventDefault();
     const method = formData.id ? 'PUT' : 'POST';
-    const url = formData.id ? `http://localhost:5005/api/announcements/${formData.id}` : 'http://localhost:5005/api/announcements';
+    const url = formData.id ? `${import.meta.env.VITE_API_URL}/api/announcements/${formData.id}` : import.meta.env.VITE_API_URL + '/api/announcements';
     try {
       const res = await fetch(url, {
         method,
@@ -51,7 +51,7 @@ export default function HostelAnnouncements() {
   const handleDelete = async (id) => {
     if (!window.confirm('Delete this announcement?')) return;
     try {
-      const res = await fetch(`http://localhost:5005/api/announcements/${id}`, { method: 'DELETE' });
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/announcements/${id}`, { method: 'DELETE' });
       if (res.ok) {
         fetchAnnouncements();
         setViewingItem(null);

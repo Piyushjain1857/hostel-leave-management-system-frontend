@@ -39,7 +39,7 @@ export default function StudentProfile({ onProfileUpdate }) {
   });
 
   const token = localStorage.getItem('studentToken');
-  const backendBase = 'http://localhost:5005';
+  const backendBase = import.meta.env.VITE_API_URL;
 
   const fetchProfile = async () => {
     try {

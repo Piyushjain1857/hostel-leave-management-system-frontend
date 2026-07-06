@@ -9,7 +9,7 @@ export default function SystemAuditLogs() {
 
   const fetchLogs = async () => {
     try {
-      const res = await fetch('http://localhost:5005/api/audit-logs');
+      const res = await fetch(import.meta.env.VITE_API_URL + '/api/audit-logs');
       if (res.ok) setLogs(await res.json());
     } catch (err) {
       console.error(err);
@@ -24,7 +24,7 @@ export default function SystemAuditLogs() {
 
   const handleExport = async () => {
     try {
-      const res = await fetch('http://localhost:5005/api/audit-logs/export');
+      const res = await fetch(import.meta.env.VITE_API_URL + '/api/audit-logs/export');
       const data = await res.json();
       const csv = "data:text/csv;charset=utf-8,ID,User,Action,Module,Timestamp\n" + 
         data.data.map(l => `${l.id},${l.userId},${l.action},${l.module},${l.timestamp}`).join('\n');

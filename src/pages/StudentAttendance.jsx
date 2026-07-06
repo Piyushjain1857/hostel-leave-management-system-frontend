@@ -11,7 +11,7 @@ export default function StudentAttendance() {
   const fetchAttendance = async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5005/api/attendance');
+      const res = await fetch(import.meta.env.VITE_API_URL + '/api/attendance');
       if (res.ok) setAttendance(await res.json());
     } catch (err) {
       console.error(err);

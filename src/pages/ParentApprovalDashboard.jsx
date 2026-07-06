@@ -3,7 +3,7 @@ import { LayoutDashboard, FileText, User, Lock, Camera, Search, SlidersHorizonta
 import SmartNotificationCenter from './SmartNotificationCenter';
 import ImageCropper from '../components/ImageCropper';
 
-const backendBase = 'http://localhost:5005';
+const backendBase = import.meta.env.VITE_API_URL;
 
 export default function ParentApprovalDashboard() {
   const [activeTab, setActiveTab] = useState(() => localStorage.getItem('parentActiveTab') || 'pending'); // 'pending', 'history', 'profile', 'notifications'

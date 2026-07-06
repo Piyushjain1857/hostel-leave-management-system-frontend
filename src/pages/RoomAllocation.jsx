@@ -12,7 +12,7 @@ export default function RoomAllocation() {
   const fetchAllocations = async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5005/api/room-allocation');
+      const res = await fetch(import.meta.env.VITE_API_URL + '/api/room-allocation');
       if (res.ok) setAllocations(await res.json());
     } catch (err) {
       console.error(err);
@@ -28,7 +28,7 @@ export default function RoomAllocation() {
   const handleSave = async (e) => {
     e.preventDefault();
     const method = formData.id ? 'PUT' : 'POST';
-    const url = formData.id ? `http://localhost:5005/api/room-allocation/${formData.id}` : 'http://localhost:5005/api/room-allocation';
+    const url = formData.id ? `${import.meta.env.VITE_API_URL}/api/room-allocation/${formData.id}` : import.meta.env.VITE_API_URL + '/api/room-allocation';
     try {
       const res = await fetch(url, {
         method,

@@ -15,7 +15,7 @@ export default function SmartNotificationCenter({ role = 'student' }) {
     setLoading(true);
     try {
       const token = localStorage.getItem(tokenKey);
-      const res = await fetch(`http://localhost:5005/${role}/notifications`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/${role}/notifications`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const json = await res.json().catch(() => ({}));
@@ -54,7 +54,7 @@ export default function SmartNotificationCenter({ role = 'student' }) {
   const markAllAsRead = async () => {
     try {
       const token = localStorage.getItem(tokenKey);
-      await fetch('http://localhost:5005/notification/read-all', {
+      await fetch(import.meta.env.VITE_API_URL + '/notification/read-all', {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ export default function SmartNotificationCenter({ role = 'student' }) {
   const markAsRead = async (id) => {
     try {
       const token = localStorage.getItem(tokenKey);
-      await fetch(`http://localhost:5005/notification/read/${id}`, {
+      await fetch(`${import.meta.env.VITE_API_URL}/notification/read/${id}`, {
         method: 'PUT',
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -96,7 +96,7 @@ export default function SmartNotificationCenter({ role = 'student' }) {
   const deleteNotification = async (id) => {
     try {
       const token = localStorage.getItem(tokenKey);
-      await fetch(`http://localhost:5005/notification/${id}`, {
+      await fetch(`${import.meta.env.VITE_API_URL}/notification/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` }
       });

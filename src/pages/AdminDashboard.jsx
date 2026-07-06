@@ -120,7 +120,7 @@ function AdminDashboard() {
   const itemsPerPage = 6;
 
   const navigate = useNavigate();
-  const backendUrl = 'http://localhost:5005';
+  const backendUrl = import.meta.env.VITE_API_URL;
 
   // ==========================================
   // LOCALSTORAGE MOCK PERSISTENCE LAYER

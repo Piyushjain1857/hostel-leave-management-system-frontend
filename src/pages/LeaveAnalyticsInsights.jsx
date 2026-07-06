@@ -8,7 +8,7 @@ export default function LeaveAnalyticsInsights() {
 
   const fetchAnalytics = async () => {
     try {
-      const res = await fetch('http://localhost:5005/api/leave-analytics');
+      const res = await fetch(import.meta.env.VITE_API_URL + '/api/leave-analytics');
       if (res.ok) setAnalytics(await res.json());
     } catch (err) {
       console.error(err);
@@ -23,7 +23,7 @@ export default function LeaveAnalyticsInsights() {
 
   const handleExport = async () => {
     try {
-      const res = await fetch('http://localhost:5005/api/leave-analytics/reports');
+      const res = await fetch(import.meta.env.VITE_API_URL + '/api/leave-analytics/reports');
       const data = await res.json();
       const csv = "data:text/csv;charset=utf-8,ID,Student,Status\n" + data.map(d => `${d.id},${d.studentId},${d.status}`).join('\n');
       const link = document.createElement('a');

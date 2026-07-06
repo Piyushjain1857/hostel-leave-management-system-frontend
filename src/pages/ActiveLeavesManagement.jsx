@@ -18,8 +18,8 @@ export default function ActiveLeavesManagement() {
       const headers = { Authorization: `Bearer ${token}` };
       
       const [leavesRes, statsRes] = await Promise.all([
-        fetch('http://localhost:5005/api/advanced-leaves/active', { headers }),
-        fetch('http://localhost:5005/api/advanced-leaves/active/stats', { headers })
+        fetch(import.meta.env.VITE_API_URL + '/api/advanced-leaves/active', { headers }),
+        fetch(import.meta.env.VITE_API_URL + '/api/advanced-leaves/active/stats', { headers })
       ]);
       
       if (leavesRes.ok) setLeaves(await leavesRes.json());

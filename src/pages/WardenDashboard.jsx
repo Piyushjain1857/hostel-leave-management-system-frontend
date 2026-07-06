@@ -6,7 +6,7 @@ import {
 import SmartNotificationCenter from './SmartNotificationCenter';
 import ImageCropper from '../components/ImageCropper';
 
-const backendBase = 'http://localhost:5005';
+const backendBase = import.meta.env.VITE_API_URL;
 
 export default function WardenDashboard() {
     const [activeTab, setActiveTab] = useState(() => localStorage.getItem('wardenActiveTab') || 'dashboard'); // 'dashboard', 'approvals', 'tracking', 'reports', 'profile', 'notifications'

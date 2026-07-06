@@ -15,8 +15,8 @@ export default function RoomManagement() {
     setLoading(true);
     try {
       const [rRes, hRes] = await Promise.all([
-        fetch('http://localhost:5005/api/rooms'),
-        fetch('http://localhost:5005/api/hostels')
+        fetch(import.meta.env.VITE_API_URL + '/api/rooms'),
+        fetch(import.meta.env.VITE_API_URL + '/api/hostels')
       ]);
       if (rRes.ok) setRooms(await rRes.json());
       if (hRes.ok) setHostels(await hRes.json());
@@ -34,7 +34,7 @@ export default function RoomManagement() {
   const handleSave = async (e) => {
     e.preventDefault();
     const method = formData.id ? 'PUT' : 'POST';
-    const url = formData.id ? `http://localhost:5005/api/rooms/${formData.id}` : 'http://localhost:5005/api/rooms';
+    const url = formData.id ? `${import.meta.env.VITE_API_URL}/api/rooms/${formData.id}` : import.meta.env.VITE_API_URL + '/api/rooms';
     try {
       const res = await fetch(url, {
         method,
@@ -54,7 +54,7 @@ export default function RoomManagement() {
   const handleDelete = async (id) => {
     if (!window.confirm('Delete this room?')) return;
     try {
-      const res = await fetch(`http://localhost:5005/api/rooms/${id}`, { method: 'DELETE' });
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/rooms/${id}`, { method: 'DELETE' });
       if (res.ok) fetchData();
     } catch (err) {
       console.error(err);

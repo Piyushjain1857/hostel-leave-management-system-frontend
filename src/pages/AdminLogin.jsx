@@ -11,7 +11,7 @@ function AdminLogin() {
   const [message, setMessage] = useState(null);
   const navigate = useNavigate();
 
-  const backendUrl = 'http://localhost:5005';
+  const backendUrl = import.meta.env.VITE_API_URL;
 
   const validateForm = () => {
     let tempErrors = {};

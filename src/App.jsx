@@ -40,7 +40,7 @@ import SystemAuditLogs from './pages/SystemAuditLogs';
 import SuperAdminDashboard from './pages/SuperAdminDashboard';
 import HostelAnnouncements from './pages/HostelAnnouncements';
 
-const backendUrl = 'http://localhost:5005';
+const backendUrl = import.meta.env.VITE_API_URL;
 
 const defaultPortalRules = [
   { id: 'p1', title: '1. Use of Authentic Credentials Only', desc: 'Access to this digital portal is strictly restricted to your authorized @college.edu institutional email address. Do not attempt to register secondary accounts or use personal email addresses. Doing so will result in an automatic account suspension.' },

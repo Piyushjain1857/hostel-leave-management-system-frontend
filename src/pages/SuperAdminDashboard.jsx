@@ -11,9 +11,9 @@ export default function SuperAdminDashboard() {
   const fetchDashboardData = async () => {
     try {
       const [dashRes, healthRes, statsRes] = await Promise.all([
-        fetch('http://localhost:5005/api/superadmin/dashboard'),
-        fetch('http://localhost:5005/api/superadmin/system-health'),
-        fetch('http://localhost:5005/api/superadmin/system-statistics')
+        fetch(import.meta.env.VITE_API_URL + '/api/superadmin/dashboard'),
+        fetch(import.meta.env.VITE_API_URL + '/api/superadmin/system-health'),
+        fetch(import.meta.env.VITE_API_URL + '/api/superadmin/system-statistics')
       ]);
       
       if (dashRes.ok) setData(await dashRes.json());
@@ -32,7 +32,7 @@ export default function SuperAdminDashboard() {
 
   const handleBackup = async () => {
     try {
-      const res = await fetch('http://localhost:5005/api/superadmin/database/backup', { method: 'POST' });
+      const res = await fetch(import.meta.env.VITE_API_URL + '/api/superadmin/database/backup', { method: 'POST' });
       const msg = await res.json();
       alert(msg.message);
     } catch {

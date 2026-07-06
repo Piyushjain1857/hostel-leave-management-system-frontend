@@ -13,7 +13,7 @@ export default function SecurityAccessControl() {
   const fetchRoles = async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5005/api/roles');
+      const res = await fetch(import.meta.env.VITE_API_URL + '/api/roles');
       if (res.ok) setRoles(await res.json());
     } catch (err) {
       console.error(err);
@@ -29,7 +29,7 @@ export default function SecurityAccessControl() {
   const handleSave = async (e) => {
     e.preventDefault();
     const method = formData.id ? 'PUT' : 'POST';
-    const url = formData.id ? `http://localhost:5005/api/roles/${formData.id}` : 'http://localhost:5005/api/roles';
+    const url = formData.id ? `${import.meta.env.VITE_API_URL}/api/roles/${formData.id}` : import.meta.env.VITE_API_URL + '/api/roles';
     try {
       const res = await fetch(url, {
         method,
@@ -49,7 +49,7 @@ export default function SecurityAccessControl() {
   const handleDelete = async (id) => {
     if (!window.confirm('Delete this role?')) return;
     try {
-      const res = await fetch(`http://localhost:5005/api/roles/${id}`, { method: 'DELETE' });
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/roles/${id}`, { method: 'DELETE' });
       if (res.ok) fetchRoles();
     } catch (err) {
       console.error(err);

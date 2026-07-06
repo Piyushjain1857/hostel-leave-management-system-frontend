@@ -16,8 +16,8 @@ export default function RejectedLeavesManagement() {
       const headers = { Authorization: `Bearer ${token}` };
       
       const [leavesRes, statsRes] = await Promise.all([
-        fetch('http://localhost:5005/api/advanced-leaves/rejected', { headers }),
-        fetch('http://localhost:5005/api/advanced-leaves/rejected/analytics', { headers })
+        fetch(import.meta.env.VITE_API_URL + '/api/advanced-leaves/rejected', { headers }),
+        fetch(import.meta.env.VITE_API_URL + '/api/advanced-leaves/rejected/analytics', { headers })
       ]);
       
       if (leavesRes.ok) setLeaves(await leavesRes.json());

@@ -11,7 +11,7 @@ export default function HostelManagement() {
   const fetchHostels = async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5005/api/hostels');
+      const res = await fetch(import.meta.env.VITE_API_URL + '/api/hostels');
       if (res.ok) setHostels(await res.json());
     } catch (e) {
       console.error(e);
@@ -27,7 +27,7 @@ export default function HostelManagement() {
   const handleSave = async (e) => {
     e.preventDefault();
     const method = formData.id ? 'PUT' : 'POST';
-    const url = formData.id ? `http://localhost:5005/api/hostels/${formData.id}` : 'http://localhost:5005/api/hostels';
+    const url = formData.id ? `${import.meta.env.VITE_API_URL}/api/hostels/${formData.id}` : import.meta.env.VITE_API_URL + '/api/hostels';
     try {
       const res = await fetch(url, {
         method,
@@ -47,7 +47,7 @@ export default function HostelManagement() {
   const handleDelete = async (id) => {
     if (!window.confirm('Delete this hostel?')) return;
     try {
-      const res = await fetch(`http://localhost:5005/api/hostels/${id}`, { method: 'DELETE' });
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/hostels/${id}`, { method: 'DELETE' });
       if (res.ok) fetchHostels();
     } catch (err) {
       console.error(err);

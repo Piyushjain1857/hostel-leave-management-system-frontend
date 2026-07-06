@@ -12,7 +12,7 @@ export default function StudentSupport() {
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
 
   const token = localStorage.getItem('studentToken');
-  const backendBase = 'http://localhost:5005';
+  const backendBase = import.meta.env.VITE_API_URL;
 
   const faqs = [
     {

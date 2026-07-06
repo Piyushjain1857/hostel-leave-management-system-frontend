@@ -10,7 +10,7 @@ export default function ApprovedLeavesAnalytics() {
       setLoading(true);
       try {
         const token = localStorage.getItem('adminToken') || localStorage.getItem('wardenToken');
-        const res = await fetch('http://localhost:5005/api/advanced-leaves/approved/analytics', {
+        const res = await fetch(import.meta.env.VITE_API_URL + '/api/advanced-leaves/approved/analytics', {
           headers: { Authorization: `Bearer ${token}` }
         });
         if (res.ok) setData(await res.json());

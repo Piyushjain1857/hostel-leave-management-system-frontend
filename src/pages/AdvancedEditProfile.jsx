@@ -27,7 +27,7 @@ export default function AdvancedEditProfile() {
       const token = localStorage.getItem('studentToken');
       setLoading(true);
       try {
-        const res = await fetch('http://localhost:5005/api/advanced-profile', {
+        const res = await fetch(import.meta.env.VITE_API_URL + '/api/advanced-profile', {
           headers: { Authorization: `Bearer ${token}` }
         });
         const data = await res.json();
@@ -87,7 +87,7 @@ export default function AdvancedEditProfile() {
     setMessage(null);
     const token = localStorage.getItem('studentToken');
     try {
-      const res = await fetch('http://localhost:5005/api/advanced-profile', {
+      const res = await fetch(import.meta.env.VITE_API_URL + '/api/advanced-profile', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
         body: JSON.stringify(profile)

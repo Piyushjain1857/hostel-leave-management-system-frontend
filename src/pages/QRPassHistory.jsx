@@ -12,7 +12,7 @@ export default function QRPassHistory() {
     setLoading(true);
     try {
       const token = localStorage.getItem('adminToken') || localStorage.getItem('wardenToken');
-      const res = await fetch('http://localhost:5005/api/qr/history', {
+      const res = await fetch(import.meta.env.VITE_API_URL + '/api/qr/history', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.ok) setQrs(await res.json());
@@ -31,7 +31,7 @@ export default function QRPassHistory() {
     if (!window.confirm("Regenerating will invalidate the old QR. Continue?")) return;
     try {
       const token = localStorage.getItem('adminToken');
-      const res = await fetch(`http://localhost:5005/api/qr/regenerate/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/qr/regenerate/${id}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
         body: JSON.stringify({ leaveId })
@@ -49,7 +49,7 @@ export default function QRPassHistory() {
   const downloadQR = async (id) => {
     try {
       const token = localStorage.getItem('adminToken');
-      const res = await fetch(`http://localhost:5005/api/qr/download/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/qr/download/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.ok) {

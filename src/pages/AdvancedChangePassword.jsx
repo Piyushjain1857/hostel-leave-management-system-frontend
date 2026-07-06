@@ -43,7 +43,7 @@ export default function AdvancedChangePassword() {
     setMessage(null);
     const token = localStorage.getItem('studentToken');
     try {
-      const res = await fetch('http://localhost:5005/api/advanced-profile/change-password', {
+      const res = await fetch(import.meta.env.VITE_API_URL + '/api/advanced-profile/change-password', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

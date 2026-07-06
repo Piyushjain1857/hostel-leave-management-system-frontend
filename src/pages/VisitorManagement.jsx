@@ -12,7 +12,7 @@ export default function VisitorManagement() {
   const fetchVisitors = async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5005/api/visitors');
+      const res = await fetch(import.meta.env.VITE_API_URL + '/api/visitors');
       if (res.ok) setVisitors(await res.json());
     } catch (err) {
       console.error(err);
@@ -28,7 +28,7 @@ export default function VisitorManagement() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:5005/api/visitors', {
+      const res = await fetch(import.meta.env.VITE_API_URL + '/api/visitors', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -45,7 +45,7 @@ export default function VisitorManagement() {
 
   const updateStatus = async (id, status) => {
     try {
-      const res = await fetch(`http://localhost:5005/api/visitors/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/visitors/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status })

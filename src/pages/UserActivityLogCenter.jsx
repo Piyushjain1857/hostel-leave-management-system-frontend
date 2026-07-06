@@ -12,7 +12,7 @@ export default function UserActivityLogCenter() {
     setLoading(true);
     try {
       const token = localStorage.getItem('adminToken') || localStorage.getItem('studentToken');
-      const res = await fetch(`http://localhost:5005/api/activity-logs?role=${filterRole}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/activity-logs?role=${filterRole}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.ok) setLogs(await res.json());
@@ -31,7 +31,7 @@ export default function UserActivityLogCenter() {
   const exportLogs = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const res = await fetch('http://localhost:5005/api/activity-logs/export', {
+      const res = await fetch(import.meta.env.VITE_API_URL + '/api/activity-logs/export', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.ok) {
