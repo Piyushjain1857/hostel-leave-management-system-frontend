@@ -30,7 +30,7 @@ To eliminate outpass forgery (such as sharing screenshots or screen recordings o
 - Includes a built-in **Guard QR Scanner** simulation page to test real-time exit/entry scanning.
 
 ### 🔌 2. Off-Grid Auto-Fallback (Mock Database)
-When the backend API (defaulting to `http://localhost:5005`) is offline, the app automatically transitions to **Mock Mode**:
+When the backend API (defaulting to `http://localhost:5000`) is offline, the app automatically transitions to **Mock Mode**:
 - Uses **local-first state sync** inside `localStorage` to emulate registration, logins, leave history tracking, notifications, profile updates, and warden directories.
 - Allows fully offline presentations and developer testing without running database or server instances.
 
