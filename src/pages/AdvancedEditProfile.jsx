@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Camera, Save, X, User, BookOpen, Home, Shield, Image as ImageIcon, Crop } from 'lucide-react';
 import ImageCropper from '../components/ImageCropper';
+import { convertHeicToJpeg } from '../utils/heicConverter';
 
 export default function AdvancedEditProfile() {
   const [profile, setProfile] = useState({
@@ -45,9 +46,10 @@ export default function AdvancedEditProfile() {
     setProfile({ ...profile, [e.target.name]: e.target.value });
   };
 
-  const handleImageUpload = (e, field) => {
-    const file = e.target.files[0];
+  const handleImageUpload = async (e, field) => {
+    let file = e.target.files[0];
     if (file) {
+      file = await convertHeicToJpeg(file);
       const reader = new FileReader();
       reader.onloadend = () => {
         setCropModal({

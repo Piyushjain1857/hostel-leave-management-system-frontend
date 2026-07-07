@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { LayoutDashboard, FileText, User, Lock, Camera, Search, SlidersHorizontal, LogOut, CheckCircle, ShieldAlert, Bell, Crop } from 'lucide-react';
 import SmartNotificationCenter from './SmartNotificationCenter';
 import ImageCropper from '../components/ImageCropper';
+import { convertHeicToJpeg } from '../utils/heicConverter';
 
 const backendBase = import.meta.env.VITE_API_URL;
 
@@ -292,9 +293,10 @@ export default function ParentApprovalDashboard() {
     }
   };
 
-  const handlePhotoUpload = (e) => {
-    const file = e.target.files[0];
+  const handlePhotoUpload = async (e) => {
+    let file = e.target.files[0];
     if (file) {
+      file = await convertHeicToJpeg(file);
       const reader = new FileReader();
       reader.onloadend = () => {
         setCropModal({

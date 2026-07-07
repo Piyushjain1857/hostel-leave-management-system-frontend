@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { User, Home, Lock, ShieldAlert, CheckCircle, Camera, Crop, Settings, Shield } from 'lucide-react';
 import ImageCropper from '../components/ImageCropper';
+import { convertHeicToJpeg } from '../utils/heicConverter';
 
 export default function StudentProfile({ onProfileUpdate }) {
   const [profile, setProfile] = useState({
@@ -196,9 +197,10 @@ export default function StudentProfile({ onProfileUpdate }) {
     }
   };
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
+  const handleImageChange = async (e) => {
+    let file = e.target.files[0];
     if (file) {
+      file = await convertHeicToJpeg(file);
       const reader = new FileReader();
       reader.onloadend = () => {
         setCropModal({
@@ -213,9 +215,10 @@ export default function StudentProfile({ onProfileUpdate }) {
     }
   };
 
-  const handleCoverChange = (e) => {
-    const file = e.target.files[0];
+  const handleCoverChange = async (e) => {
+    let file = e.target.files[0];
     if (file) {
+      file = await convertHeicToJpeg(file);
       const reader = new FileReader();
       reader.onloadend = () => {
         setCropModal({
