@@ -122,7 +122,7 @@ export default function AdvancedEditProfile() {
           )}
           <label className="edit-cover-btn" style={{ background: 'rgba(255,255,255,0.9)', color: '#334155', padding: '0.6rem 1.2rem', borderRadius: '24px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', fontWeight: 600, boxShadow: '0 2px 4px rgba(0,0,0,0.1)', transition: 'transform 0.2s, background 0.2s' }}>
             <ImageIcon size={16} /> Update Cover
-            <input type="file" accept="image/*" onChange={(e) => handleImageUpload(e, 'coverImage')} style={{ display: 'none' }} />
+            <input type="file" accept="image/*, .heic, .heif" onChange={(e) => handleImageUpload(e, 'coverImage')} style={{ display: 'none' }} />
           </label>
         </div>
         
@@ -131,7 +131,7 @@ export default function AdvancedEditProfile() {
           <div className="profile-avatar-overlay">
             <label className="avatar-action-btn" title="Upload New Photo">
               <Camera size={20} />
-              <input type="file" accept="image/*" onChange={(e) => handleImageUpload(e, 'profileImage')} style={{ display: 'none' }} />
+              <input type="file" accept="image/*, .heic, .heif" onChange={(e) => handleImageUpload(e, 'profileImage')} style={{ display: 'none' }} />
             </label>
             {profile.profileImage && (
               <button type="button" className="avatar-action-btn" title="Crop Current Photo" onClick={() => openCropForExisting('profileImage')}>

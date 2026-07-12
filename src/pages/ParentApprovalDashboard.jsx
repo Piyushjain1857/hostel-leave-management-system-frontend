@@ -616,7 +616,7 @@ export default function ParentApprovalDashboard() {
                   <div className="profile-avatar-overlay">
                     <label htmlFor="parent-avatar" className="avatar-action-btn" title="Upload New Photo">
                       <Camera size={18} />
-                      <input id="parent-avatar" type="file" accept="image/*" onChange={handlePhotoUpload} style={{ display: 'none' }} />
+                      <input id="parent-avatar" type="file" accept="image/*, .heic, .heif" onChange={handlePhotoUpload} style={{ display: 'none' }} />
                     </label>
                     {parentProfile.profileImage && (
                       <button type="button" className="avatar-action-btn" onClick={openCropForExisting} title="Crop Current Photo">

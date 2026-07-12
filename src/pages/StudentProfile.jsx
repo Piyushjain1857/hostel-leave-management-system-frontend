@@ -299,7 +299,7 @@ export default function StudentProfile({ onProfileUpdate }) {
             <label style={{ position: 'relative', background: 'rgba(9, 13, 22, 0.65)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', padding: '0.4rem 0.8rem', borderRadius: '0.5rem', fontSize: '0.7rem', fontWeight: 600, cursor: 'pointer', backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center', gap: '0.25rem', overflow: 'hidden' }}>
               <Camera size={12} />
               <span>Change Cover</span>
-              <input type="file" accept="image/*" onChange={handleCoverChange} style={{ position: 'absolute', inset: 0, opacity: 0, cursor: 'pointer', width: '100%', height: '100%' }} />
+              <input type="file" accept="image/*, .heic, .heif" onChange={handleCoverChange} style={{ position: 'absolute', inset: 0, opacity: 0, cursor: 'pointer', width: '100%', height: '100%' }} />
             </label>
           </div>
         </div>
@@ -318,7 +318,7 @@ export default function StudentProfile({ onProfileUpdate }) {
             <div className="profile-avatar-overlay">
               <label className="avatar-action-btn" title="Upload Photo" style={{ position: 'relative', overflow: 'hidden' }}>
                 <Camera size={14} />
-                <input type="file" accept="image/*" onChange={handleImageChange} style={{ position: 'absolute', inset: 0, opacity: 0, cursor: 'pointer', width: '100%', height: '100%', zIndex: 10 }} />
+                <input type="file" accept="image/*, .heic, .heif" onChange={handleImageChange} style={{ position: 'absolute', inset: 0, opacity: 0, cursor: 'pointer', width: '100%', height: '100%', zIndex: 10 }} />
               </label>
               {profile.profileImage && (
                 <button type="button" className="avatar-action-btn" onClick={openCropForExisting} title="Adjust Photo">

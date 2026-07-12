@@ -1,4 +1,4 @@
-import heic2any from 'heic2any';
+import { heicTo } from 'heic-to';
 
 /**
  * Converts a HEIC/HEIF file to standard JPEG in the frontend.
@@ -18,18 +18,17 @@ export const convertHeicToJpeg = async (file) => {
   if (!isHEIC) return file;
 
   try {
-    const blob = await heic2any({
+    const convertedBlob = await heicTo({
       blob: file,
-      toType: 'image/jpeg',
+      type: 'image/jpeg',
       quality: 0.8
     });
     
-    const convertedFile = Array.isArray(blob) ? blob[0] : blob;
     const newName = file.name.replace(/\.(heic|heif)$/i, '.jpg');
     
-    return new File([convertedFile], newName, { type: 'image/jpeg' });
+    return new File([convertedBlob], newName, { type: 'image/jpeg' });
   } catch (error) {
-    console.error('Error converting HEIC image:', error);
+    console.error('Error converting HEIC image with heic-to:', error);
     return file; // fallback to original file if conversion fails
   }
 };
