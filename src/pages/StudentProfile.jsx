@@ -51,10 +51,7 @@ export default function StudentProfile({ onProfileUpdate }) {
         }
       });
       const json = await res.json().catch(() => ({}));
-      console.log("reponse",res)
       if (res.ok) {
-        console.log("profle 1",json.profileImage )
-            console.log("profle 1.1",json.profileImage )
         setProfile({
           name: json.name || '',
           email: json.email || '',
@@ -70,14 +67,11 @@ export default function StudentProfile({ onProfileUpdate }) {
           parentProfileImage: json.parentProfileImage || ''
         });
       } else {
-        console.log("profle 2")
         // Fallback to LocalStorage profile
         const mockProfile = localStorage.getItem('mockStudentProfile');
         if (mockProfile) {
-          console.log("profle 3")
           setProfile(JSON.parse(mockProfile));
         } else {
-          console.log("profle 4")
           const defaultProf = {
             name: 'Piyush jain',
             email: 'student@college.edu',
@@ -487,8 +481,8 @@ export default function StudentProfile({ onProfileUpdate }) {
                   )}
                 </div>
                 <div>
-                   <h5 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 700, color: 'var(--color-dark)' }}>{profile.parentName}</h5>
-                   <span style={{ fontSize: '0.7rem', color: 'var(--color-muted)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Linked Guardian Account</span>
+                  <h5 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 700, color: 'var(--color-dark)' }}>{profile.parentName}</h5>
+                  <span style={{ fontSize: '0.7rem', color: 'var(--color-muted)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Linked Guardian Account</span>
                 </div>
               </div>
             )}
