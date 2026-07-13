@@ -54,7 +54,7 @@ export default function StudentProfile({ onProfileUpdate }) {
       console.log("reponse",res)
       if (res.ok) {
         console.log("profle 1",json.profileImage )
-            console.log("profle 1.1",json.profileimage )
+            console.log("profle 1.1",json.profileImage )
         setProfile({
           name: json.name || '',
           email: json.email || '',
@@ -62,7 +62,7 @@ export default function StudentProfile({ onProfileUpdate }) {
           course: json.course || '',
           year: json.year || '',
           hostelRoom: json.hostelRoom || '',
-          profileImage: json.profileimage || '',
+          profileImage: json.profileImage || '',
           coverImage: json.coverImage || '',
           parentName: json.parentName || '',
           parentEmail: json.parentEmail || '',
