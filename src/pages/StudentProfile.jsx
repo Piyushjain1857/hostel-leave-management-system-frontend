@@ -53,7 +53,8 @@ export default function StudentProfile({ onProfileUpdate }) {
       const json = await res.json().catch(() => ({}));
       console.log("reponse",res)
       if (res.ok) {
-        console.log("profle 1")
+        console.log("profle 1",json.profileImage )
+            console.log("profle 1.1",json.profileimage )
         setProfile({
           name: json.name || '',
           email: json.email || '',
@@ -61,7 +62,7 @@ export default function StudentProfile({ onProfileUpdate }) {
           course: json.course || '',
           year: json.year || '',
           hostelRoom: json.hostelRoom || '',
-          profileImage: json.profileImage || '',
+          profileImage: json.profileimage || '',
           coverImage: json.coverImage || '',
           parentName: json.parentName || '',
           parentEmail: json.parentEmail || '',
